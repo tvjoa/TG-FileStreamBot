@@ -47,7 +47,7 @@ func sendLink(ctx *ext.Context, u *ext.Update) error {
 		return dispatcher.EndGroups
 	}
 	if len(config.ValueOf.AllowedUsers) != 0 && !utils.Contains(config.ValueOf.AllowedUsers, chatId) {
-		ctx.Reply(u, "You are not allowed to use this bot.", nil)
+		ctx.Reply(u, "Você não tem permissão para usar este bot.", nil)
 		return dispatcher.EndGroups
 	}
 	supported, err := supportedMediaFilter(u.EffectiveMessage)
@@ -55,7 +55,7 @@ func sendLink(ctx *ext.Context, u *ext.Update) error {
 		return err
 	}
 	if !supported {
-		ctx.Reply(u, "Sorry, this message type is unsupported.", nil)
+		ctx.Reply(u, "Desculpe, este tipo de mensagem não é compatível.", nil)
 		return dispatcher.EndGroups
 	}
 	update, err := utils.ForwardMessages(ctx, chatId, config.ValueOf.LogChannelID, u.EffectiveMessage.ID)
